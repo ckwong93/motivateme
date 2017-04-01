@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { goalRef } from '../firebase';
 import { setGoals } from '../actions';
 import { connect } from 'react-redux';
-
+import GoalItem from './GoalItem'
 
 class GoalList extends Component {
   componentDidMount(){
@@ -19,7 +19,16 @@ class GoalList extends Component {
 
   render(){
     return(
-      <div>Goal List</div>
+      <div>
+        {
+          this.props.goals.map((goal, index) => {
+            return (
+              // <div key={index}>{goal.title}</div>
+              <GoalItem key={index} goal={goal}/>
+            )
+          })
+        }
+      </div>
     )
   }
 }
